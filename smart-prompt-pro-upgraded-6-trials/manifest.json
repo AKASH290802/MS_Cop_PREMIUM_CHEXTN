@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Smart Prompt",
+  "short_name": "SmartPrompt",
+  "version": "1.1.1",
+  "description": "AI prompt enhancer with pro prompts, personas, history, diagnostics, sync, and downloads. 100% on-device.",
+  "author": "Akash",
+  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "action": { "default_popup": "popup/popup.html", "default_title": "Smart Prompt", "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" } },
+  "background": { "service_worker": "background/service-worker.js", "type": "module" },
+  "content_scripts": [
+    { "matches": ["https://chat.openai.com/*", "https://chatgpt.com/*", "https://claude.ai/*", "https://gemini.google.com/*", "https://perplexity.ai/*", "https://www.perplexity.ai/*", "https://copilot.microsoft.com/*", "https://cursor.sh/*"], "js": ["content/content.js"], "css": ["content/content.css"], "run_at": "document_idle" }
+  ],
+  "permissions": ["storage", "activeTab", "scripting", "tabs", "downloads", "alarms"],
+  "host_permissions": ["https://chat.openai.com/*", "https://chatgpt.com/*", "https://claude.ai/*", "https://gemini.google.com/*", "https://perplexity.ai/*", "https://www.perplexity.ai/*", "https://copilot.microsoft.com/*", "https://cursor.sh/*", "https://huggingface.co/*", "https://cdn-lfs.huggingface.co/*", "https://cdn.jsdelivr.net/*", "https://*/*"],
+  "web_accessible_resources": [{ "resources": ["icons/*", "diagnostic-test.html", "lib/*"], "matches": ["<all_urls>"]}],
+  "options_page": "options/options.html"
+}

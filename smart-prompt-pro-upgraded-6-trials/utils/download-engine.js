@@ -1,0 +1,1 @@
+export async function downloadAsText(text,filename='smart-prompt.txt'){const url='data:text/plain;charset=utf-8,'+encodeURIComponent(text||'');return chrome.downloads.download({url,filename,saveAs:true})}
